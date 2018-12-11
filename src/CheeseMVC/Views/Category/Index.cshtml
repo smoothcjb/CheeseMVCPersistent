@@ -1,8 +1,9 @@
-﻿@ViewBag.title
+﻿@model IList<CheeseMVC.Models.CheeseCategory>
 
+<h1>@ViewBag.Title</h1>
 
 <ul>
-    @foreach (var category in ViewBag.categories)
+    @foreach (var category in Model)
 
     {
         <li>@category.Name</li>

@@ -27,7 +27,7 @@ namespace CheeseMVC.Controllers
         {
             List<CheeseCategory> categories = context.Categories.ToList();
             ViewBag.title = "Cheese Categories";
-            ViewBag.categories = categories;
+            //ViewBag.categories = categories;
 
             return View(categories);
         }
