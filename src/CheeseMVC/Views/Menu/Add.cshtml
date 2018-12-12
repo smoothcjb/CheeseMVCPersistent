@@ -4,13 +4,12 @@
    <h3> @ViewBag.Title</h3>
 
  <br />
-<form asp-controller= "Menu" asp-action= "Add" method="post">
+ <form asp-controller="Menu" asp-action="Add" method="post">
 
-   <label asp-for="Name"></label>
-   <input asp-for= "Name" />
-   <span asp-validation-for="Name"></span>
+     <label asp-for="Name"></label>
+     <input asp-for="Name" />
 
-
-    <input type="submit" value=" Add Menu"/>
-</form>
+     <input type="submit" value="Create Menu" />
+     <span class="error" asp-validation-for="Name"></span>
+ </form>
 

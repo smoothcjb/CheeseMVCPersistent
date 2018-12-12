@@ -1,0 +1,11 @@
+﻿
+<h1>@ViewBag.Title</h1>
+
+<ul>
+   
+    @foreach(var categoryItem in @ViewBag.categoryItems)
+    {
+        <li>@categoryItem.Name</li>
+    }
+
+</ul>
