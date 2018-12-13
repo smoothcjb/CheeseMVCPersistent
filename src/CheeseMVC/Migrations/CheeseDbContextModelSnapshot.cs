@@ -86,12 +86,12 @@ namespace CheeseMVC.Migrations
             modelBuilder.Entity("CheeseMVC.Models.CheeseMenu", b =>
                 {
                     b.HasOne("CheeseMVC.Models.Cheese", "Cheese")
-                        .WithMany()
+                        .WithMany("CheeseMenus")
                         .HasForeignKey("CheeseID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CheeseMVC.Models.Menu", "Menu")
-                        .WithMany()
+                        .WithMany("CheeseMenus")
                         .HasForeignKey("MenuID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

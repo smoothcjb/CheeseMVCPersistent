@@ -11,7 +11,7 @@ using System;
 namespace CheeseMVC.Migrations
 {
     [DbContext(typeof(CheeseDbContext))]
-    [Migration("20181211073303_DBInitialization")]
+    [Migration("20181213080217_DBInitialization")]
     partial class DBInitialization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,12 +87,12 @@ namespace CheeseMVC.Migrations
             modelBuilder.Entity("CheeseMVC.Models.CheeseMenu", b =>
                 {
                     b.HasOne("CheeseMVC.Models.Cheese", "Cheese")
-                        .WithMany()
+                        .WithMany("CheeseMenus")
                         .HasForeignKey("CheeseID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CheeseMVC.Models.Menu", "Menu")
-                        .WithMany()
+                        .WithMany("CheeseMenus")
                         .HasForeignKey("MenuID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -25,14 +25,14 @@ namespace CheeseMVC.Controllers
         public IActionResult Index()
 
         {
+            ViewBag.Title = "Categories";
             List<CheeseCategory> categories = context.Categories.ToList();
-            ViewBag.title = "Cheese Categories";
-            //ViewBag.categories = categories;
-
+            
             return View(categories);
         }
         public IActionResult Add()
         {
+            ViewBag.title = "Add Category";
             AddCategoryViewModel addCategoryViewModel = new AddCategoryViewModel();
      
             return View(addCategoryViewModel);

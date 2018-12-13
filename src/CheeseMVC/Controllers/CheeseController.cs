@@ -27,6 +27,7 @@ namespace CheeseMVC.Controllers
 
         public IActionResult Add()
         {
+            ViewBag.title = "Add Cheese";
             AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel(context.Categories.ToList());
             return View(addCheeseViewModel);
         }
@@ -43,7 +44,6 @@ namespace CheeseMVC.Controllers
                 {
                     Name = addCheeseViewModel.Name,
                     Description = addCheeseViewModel.Description,
-                    //Type = addCheeseViewModel.Type
                     Category = newCheeseCategory
                 };
 
@@ -78,7 +78,7 @@ namespace CheeseMVC.Controllers
         }
         public IActionResult Category(int id)
         {
-            ViewBag.Title = context.Categories.Single(i => i.ID == id).Name + " Cheeses";
+            ViewBag.Title = context.Categories.Single(i => i.ID == id).Name;
             ViewBag.categoryItems = context.Cheeses.Where(c => c.CategoryID == id).ToList();
        
             return View();

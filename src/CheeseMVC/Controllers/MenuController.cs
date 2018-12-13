@@ -27,13 +27,14 @@ namespace CheeseMVC.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewBag.title = "Menus";
             List<Menu> menus = context.Menus.ToList();
 
             return View(menus);
         }
         public IActionResult Add()
         {
-            ViewBag.Title = "New Menu";
+            ViewBag.Title = "Add Menu";
             AddMenuViewModel addMenuViewModel = new AddMenuViewModel();
 
             return View(addMenuViewModel);
@@ -49,7 +50,7 @@ namespace CheeseMVC.Controllers
                 };
                 context.Menus.Add(newMenu);
                 context.SaveChanges();
-                return Redirect($"Menu/ViewMenu/{newMenu.ID}");
+                return Redirect("/Menu");
             }
             return View(addMenuViewModel);
         }
@@ -62,11 +63,12 @@ namespace CheeseMVC.Controllers
                 Menu = menu,
                 Items = items
             };
-            //ViewBag.Title = menu.Name;
+
             return View(viewMenuViewModel);
         }
         public IActionResult AddItem(int id)
         {
+           
             Menu menu = context.Menus.Single(m => m.ID == id);
             List<Cheese> cheeses = context.Cheeses.ToList();
 
@@ -88,15 +90,19 @@ namespace CheeseMVC.Controllers
                     CheeseMenu menuItem = new CheeseMenu
                     {
                         Cheese = context.Cheeses.Single(c => c.ID == cheeseID),
+                     
                         Menu = context.Menus.Single(m => m.ID == menuID)
                     };
                     context.CheeseMenus.Add(menuItem);
                     context.SaveChanges();
                     
                 }
-                return Redirect($"Menu/ViewMenu/{addMenuItemViewModel.MenuID}");
+                return Redirect($"/Menu/ViewMenu/{addMenuItemViewModel.MenuID}");
             }
+            
             return View(addMenuItemViewModel);
         }
+        
+
     }
 }
